@@ -1,17 +1,16 @@
-const MinuteLimit = 2;
-
 angular.module("webPet")
 .service('TimerService', [
   class TimerService {
     constructor() {
-      this.timer = minuteLimit * 60;
-      this.countDown;
+      this.timer = 0;
+      this.countUp;
       this.killTimer = this.killTimer.bind(this);
     }
 
     startTimer() {
       this.countDown = setInterval(() => {
-        this.timer--;
+        this.timer++;
+        console.log('tick');
       }, 1000);
     }
 
@@ -21,7 +20,7 @@ angular.module("webPet")
     }
 
     resetTimer() {
-      this.timer = minuteLimit * 60;
+      this.timer = 0;
     }
   }
-];
+]);
