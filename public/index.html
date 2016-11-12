@@ -8,11 +8,14 @@
 <body ng-app="webPet">
   <h1>WebPET</h1>
   <div id="main">
-    <div id="petDisplay" >
-      <div ng-controller="StatusController">
-        <h2>name: {{petName}}</h2>
-        <h2>health: {{health}}</h2>
-      </div>
+    <div id="petDisplay" ng-controller="StatusController">
+      <div>name: {{petName}}</div>
+      <div>health: {{health}}</div>
+      <div>hunger: {{hunger}}</div>
+      <div>energy: {{energy}}</div>
+      <div>happiness: {{happiness}}</div>
+      <button ng-click="feed()">feed</button>
+
       <p id="pet" ng-controller="animController">{{petState}}</p>
     </div>
     <input type="text" id="cliInput">

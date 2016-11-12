@@ -1,7 +1,7 @@
 angular.module("webPet")
   .service('EnergyService', function() {
     const maxEnergy = 10;
-    const energyLvl = 0;
+    const energyLvl = 5;
 
     this.energyLvl = energyLvl;
     this.getEnergyLvl = () => {
