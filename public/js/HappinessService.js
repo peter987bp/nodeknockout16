@@ -20,6 +20,7 @@ angular.module("webPet")
     this.incrementHappinessLvl = (value) => {
       this.happinessLvl += value;
       if(this.happinessLvl >= 10) {
+        this.happinessLvl = 10;
         HealthService.incrementHealth(1);
       }
       //increases in energy ups happiness

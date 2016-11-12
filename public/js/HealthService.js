@@ -13,6 +13,9 @@ angular.module("webPet")
     }
     this.incrementHealth = (value) => {
       this.health += value;
+      if (this.health >= maxHealth) {
+        this.health = maxHealth;
+      }
       return this.health;
     }
     this.decrementHealth = (value) => {

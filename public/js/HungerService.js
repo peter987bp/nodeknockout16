@@ -30,7 +30,7 @@ angular.module("webPet")
     this.reduceHunger = () => {
       if(this.hungerLvl - 1 <= 0) {
         this.hungerLvl = 0;
-        HappinessService.reduceHappiness();
+        HappinessService.decrementHappinessLvl(1);
       } else {
         --this.hungerLvl;
       }
