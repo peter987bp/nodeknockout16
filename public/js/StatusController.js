@@ -1,44 +1,35 @@
 angular.module("webPet") // attach a controller to the module
 .controller( 'StatusController',
   ['$scope',
-  'TimerService',
-  'HealthService',
-  'HungerService',
-  'HappinessService',
-  'EnergyService',
-  ($scope, TimerService, HealthService, HungerService, HappinessService, EnergyService) => {
-    TimerService.startTimer();
+  '$interval',
+  ($scope, $interval) => {
     $scope.petName = 'doggie';
-    $scope.health = HealthService.getHealth();
-    $scope.hunger = HungerService.getHungerLvl();
-    $scope.happiness = HappinessService.getHappinessLvl();
-    $scope.energy = EnergyService.getEnergyLvl();
+    $scope.health = $scope.HealthService.getHealth();
+    $scope.hunger = $scope.HungerService.getHungerLvl();
+    $scope.happiness = $scope.HappinessService.getHappinessLvl();
+    $scope.energy = $scope.EnergyService.getEnergyLvl();
 
     $scope.input = '';
 
-    this.updateStatus = () => {
-      $scope.health = HealthService.getHealth();
-      $scope.hunger = HungerService.getHungerLvl();
-      $scope.happiness = HappinessService.getHappinessLvl();
-      $scope.energy = EnergyService.getEnergyLvl();
-    }
+    this.updateStatus = $interval (() => {
+      $scope.health = $scope.HealthService.getHealth();
+      $scope.hunger = $scope.HungerService.getHungerLvl();
+      $scope.happiness = $scope.HappinessService.getHappinessLvl();
+      $scope.energy = $scope.EnergyService.getEnergyLvl();
+    }, 1000);
 
     this.feed = () => {
-      HungerService.reduceHunger();
-      this.updateStatus();
+      $scope.HungerService.reduceHunger();
     }
 
     this.play = () => {
-      HappinessService.incrementHappinessLvl(1);
-      this.updateStatus();
+      $scope.HappinessService.incrementHappinessLvl(1);
     }
 
     this.clean = () => {
-      this.updateStatus();
     }
 
     this.wake = () => {
-      this.updateStatus();
     }
 
     $scope.read = () => {

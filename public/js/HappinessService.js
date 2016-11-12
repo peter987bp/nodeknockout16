@@ -4,11 +4,18 @@ angular.module("webPet")
     function(HappinessService) {
     const maxHappiness = 10;
     const happinessLvl = 5;
+    this._scope = null;
 
+    this.init = (scope) => {
+      this._scope = scope;
+      this.happinessLvl = happinessLvl;
+    }
       //When happiness level is high positive effect to health
       //When happiness level is low it it negative effect to health
 
-    this.happinessLvl = happinessLvl;
+    this.getHappinessLvl = () => {
+      return this.happinessLvl;
+    }
 
     this.incrementHappinessLvl = (value) => {
       this.happinessLvl += value;
@@ -21,10 +28,11 @@ angular.module("webPet")
     this.decrementHappinessLvl = (value) => {
       this.happinessLvl -= value;
       //When happiness reduces it affects health
-      if(this.happinessLvl <= ) {
+      if(this.happinessLvl <= 0) {
         HealthService.reduceHealth(-1);
       }
       return this.happinessLvl;
-    };
+    }
+
   }])
 
