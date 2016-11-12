@@ -7,30 +7,34 @@
 </head>
 <body ng-app="webPet">
   <h1>WebPET</h1>
-  <div id="main" ng-controller="StatusController">
-    <div id="petDisplay">
-      <div>name: {{petName}}</div>
-      <div>health: {{health}}</div>
-      <div>hunger: {{hunger}}</div>
-      <div>energy: {{energy}}</div>
-      <div>happiness: {{happiness}}</div>
+  <div ng-controller="TimeController">
+    <div id="main" ng-controller="StatusController">
+      <div id="petDisplay">
+        <div>name: {{petName}}</div>
+        <div>health: {{health}}</div>
+        <div>hunger: {{hunger}}</div>
+        <div>energy: {{energy}}</div>
+        <div>happiness: {{happiness}}</div>
+        <div>pooped: {{pooped}}</div>
 
-      <p id="pet" ng-controller="animController">{{petState}}</p>
+        <p id="pet" ng-controller="animController">{{petState}}</p>
+      </div>
+      <form ng-submit="read()">
+        <input type="text" id="cliInput" ng-model="input" autofocus>
+        <input type="submit" style="display: none">
+      </form>
     </div>
-    <form ng-submit="read()">
-      <input type="text" id="cliInput" ng-model="input" autofocus>
-      <input type="submit" style="display: none">
-    </form>
   </div>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
-  <script type="text/javascript" src="/js/timerService.js"></script>
+  <script type="text/javascript" src="/js/TimeController.js"></script>
   <script type="text/javascript" src="/js/anim_states.js"></script>
   <script type="text/javascript" src="/js/StatusController.js"></script>
   <script type="text/javascript" src="/js/HealthService.js"></script>
   <script type="text/javascript" src="/js/HappinessService.js"></script>
   <script type="text/javascript" src="/js/HungerService.js"></script>
   <script type="text/javascript" src="/js/EnergyService.js"></script>
+  <script type="text/javascript" src="/js/PoopService.js"></script>
 </body>
 </html>
