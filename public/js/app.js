@@ -23,7 +23,7 @@ angular.module("webPet", [])
       //iterate through animation frames in a continuous loop
       //change frame array as state changes in parent
       $scope.petState = $scope.baseFrames[++$scope.animCount % 2];
-    }, (50 * $scope.health));
+    }, (50 * (20 - $scope.health)));
 
     $scope.die = () => {
       //display death frames, then stop animation entirely
