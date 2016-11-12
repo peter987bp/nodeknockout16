@@ -7,7 +7,8 @@ angular.module("webPet", [])
   'PET_BASE_FRAME2',
   'EGG_BASE_FRAME1',
   'POOP_BASE_FRAME1',
-  ($scope, $interval, TimerService, PET_BASE_FRAME1, PET_BASE_FRAME2, EGG_BASE_FRAME1, POOP_BASE_FRAME1) => {
+  'POOP_BASE_FRAME2',
+  ($scope, $interval, TimerService, PET_BASE_FRAME1, PET_BASE_FRAME2, EGG_BASE_FRAME1, POOP_BASE_FRAME1,POOP_BASE_FRAME2) => {
     //Initial pet sprite when game is started
     $scope.petState = null;
 
@@ -17,7 +18,7 @@ angular.module("webPet", [])
     $scope.sleepFrames = [];
     $scope.playFrames = [];
     $scope.eatFrames = [];
-    $scope.poopFrames = [POOP_BASE_FRAME1];
+    $scope.poopFrames = [POOP_BASE_FRAME1, POOP_BASE_FRAME2];
     $scope.dieFrames = [];
 
     this.animate = $interval(() => {
