@@ -2,7 +2,7 @@
 
 WebPET is a node remake of our beloved Tamagochi.
 
-[Game Instruction]
+* [Game Instruction](https://github.com/rumblex/nodeknockout2016-lumpysquirrels/wiki/Game-Instructions)
 
 
 
