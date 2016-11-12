@@ -7,4 +7,12 @@ angular.module("webPet")
     this.getEnergyLvl = () => {
       return this.energyLvl;
     }
+    this.incrementEnergyLvl = (value) => {
+      this.energyLvl += value;
+      return this.energyLvl;
+    }
+    this.decrementEnergyLvl = (value) => {
+      this.energyLvl -= value;
+      return this.energyLvl;
+    }
   })
