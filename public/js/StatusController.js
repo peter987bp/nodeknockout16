@@ -1,45 +1,52 @@
 angular.module("webPet") // attach a controller to the module
 .controller( 'StatusController',
   ['$scope',
-  'TimerService',
-  'HealthService',
-  'HungerService',
-  'HappinessService',
-  'EnergyService',
-  ($scope, TimerService, HealthService, HungerService, HappinessService, EnergyService) => {
-    TimerService.startTimer();
+  '$interval',
+  ($scope, $interval) => {
     $scope.petName = 'doggie';
-    $scope.health = HealthService.getHealth();
-    $scope.hunger = HungerService.getHungerLvl();
-    $scope.happiness = HappinessService.getHappinessLvl();
-    $scope.energy = EnergyService.getEnergyLvl();
-    $scope.awake = EnergyService.getAwake();
+    $scope.health = $scope.HealthService.getHealth();
+    $scope.hunger = $scope.HungerService.getHungerLvl();
+    $scope.happiness = $scope.HappinessService.getHappinessLvl();
+    $scope.energy = $scope.EnergyService.getEnergyLvl();
+    $scope.pooped = $scope.PoopService.pooped;
+    $scope.awake = $scope.EnergyService.getAwake();
 
     $scope.input = '';
 
-    this.updateStatus = () => {
-      $scope.health = HealthService.getHealth();
-      $scope.hunger = HungerService.getHungerLvl();
-      $scope.happiness = HappinessService.getHappinessLvl();
-      $scope.energy = EnergyService.getEnergyLvl();
+    this.updateStatus = $interval (() => {
+      $scope.health = $scope.HealthService.getHealth();
+      $scope.hunger = $scope.HungerService.getHungerLvl();
+      $scope.happiness = $scope.HappinessService.getHappinessLvl();
+      $scope.energy = $scope.EnergyService.getEnergyLvl();
+      $scope.pooped = $scope.PoopService.pooped;
+      $scope.awake = $scope.EnergyService.getAwake();
+    }, 1000);
+
+    this.updateOnPlayerAction = () => {
+      $scope.health = $scope.HealthService.getHealth();
+      $scope.hunger = $scope.HungerService.getHungerLvl();
+      $scope.happiness = $scope.HappinessService.getHappinessLvl();
+      $scope.energy = $scope.EnergyService.getEnergyLvl();
+      $scope.pooped = $scope.PoopService.pooped;
+      $scope.awake = $scope.EnergyService.getAwake();
     }
 
     this.feed = () => {
-      HungerService.reduceHunger();
-      this.updateStatus();
+      $scope.HungerService.reduceHunger();
+      this.updateOnPlayerAction();
     }
 
     this.play = () => {
-      HappinessService.incrementHappinessLvl(1);
-      this.updateStatus();
+      $scope.HappinessService.incrementHappinessLvl(1);
+      this.updateOnPlayerAction();
     }
 
     this.clean = () => {
-      this.updateStatus();
+      $scope.PoopService.cleanPoop();
+      this.updateOnPlayerAction();
     }
 
     this.wake = () => {
-      this.updateStatus();
     }
 
     $scope.read = () => {

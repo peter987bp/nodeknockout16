@@ -1,12 +1,18 @@
 angular.module("webPet")
-  .service('EnergyService', ['HealthService', 'HappinessService', 'TimerService',
-    function(HealthService, HappinessService, TimerService) {
+  .service('EnergyService', ['HealthService', 'HappinessService',
+    function(HealthService, HappinessService) {
     const maxEnergy = 10;
     const energyLvl = 5;
-    const awake = true;
 
-    this.energyLvl = energyLvl;
-    this.awake = awake;
+    this.awake = true;
+
+    this._scope = null;
+
+    this.init = (scope) => {
+      this._scope = scope;
+      this.energyLvl = energyLvl;
+      this.awake = true;
+    }
 
     this.getEnergyLvl = () => {
       return this.energyLvl;
@@ -31,10 +37,6 @@ angular.module("webPet")
         return this.energyLvl;
       }
     }
-    this.sleep = () => {
-      this.awake = false;
-      return this.awake;
-    }
     // if energyLvl is 0 > going to sleep && decrement Health
     this.decrementEnergyLvl = (value) => {
       if (this.energyLvl === 0) {
@@ -48,7 +50,7 @@ angular.module("webPet")
           HealthService.decrementHealth(1);
           //message 'exhausted'
           console.log('I am exhausted');
-          this.sleep();
+          this.awake = false;
         }
         return this.energyLvl;
       }

@@ -1,13 +1,21 @@
 angular.module("webPet")
   .service('HealthService', function() {
     const maxHealth = 10;
-    this.health = maxHealth;
+    this._scope = null;
+
+    this.init = (scope) => {
+      this._scope = scope;
+      this.health = maxHealth;
+    }
 
     this.getHealth = () => {
       return this.health;
     }
     this.incrementHealth = (value) => {
       this.health += value;
+      if (this.health >= maxHealth) {
+        this.health = maxHealth;
+      }
       return this.health;
     }
     this.decrementHealth = (value) => {
