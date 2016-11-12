@@ -13,6 +13,7 @@ angular.module("webPet") // attach a controller to the module
     $scope.hunger = HungerService.getHungerLvl();
     $scope.happiness = HappinessService.getHappinessLvl();
     $scope.energy = EnergyService.getEnergyLvl();
+    $scope.awake = EnergyService.getAwake();
 
     $scope.input = '';
 
