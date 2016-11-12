@@ -1,11 +1,15 @@
 angular.module("webPet")
   .service('HappinessService', [
-    'HealthService',
-    function(HealthService) {
+    function() {
     const maxHappiness = 10;
     const happinessLvl = 5;
+    this._scope = null;
 
-    this.happinessLvl = happinessLvl;
+    this.init = (scope) => {
+      this._scope = scope;
+      this.happinessLvl = happinessLvl;
+    }
+
     this.getHappinessLvl = () => {
       return this.happinessLvl;
     }
@@ -21,7 +25,7 @@ angular.module("webPet")
     this.reduceHappiness = () => {
       if(this.happinessLvl - 1 <= 0) {
         this.happinessLvl = 0
-        HealthService.reduceHealth();
+        //HealthService.reduceHealth();
       } else {
         --this.happinessLvl;
       }
