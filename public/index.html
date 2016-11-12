@@ -5,15 +5,15 @@
   <title>WebPET</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
-<body ng-app="myApp">
+<body ng-app="webPet">
   <h1>WebPET</h1>
   <div id="main">
-    <div id="petDisplay">
+    <div id="petDisplay" ng-controller="petController">
       <div ng-controller="header">
         <h2>name: {{petName}}</h2>
         <h2>health: {{health}}</h2>
       </div>
-      <!-- 80 chars: ################################################################################ -->
+      <p id="pet">{{petState}}</p>
     </div>
     <input type="text" id="cliInput">
   </div>

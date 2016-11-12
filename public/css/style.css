@@ -27,9 +27,15 @@ h1 {
   background-color: #222;
   color: #ddd;
   font-family: monospace;
-  font-size: 12px;
+  font-size: 14px;
   padding: 20px;
   height: 360px;
+}
+
+#pet {
+  width: 240px;
+  white-space: pre-wrap;
+  transform: scaleY(0.5);
 }
 
 #cliInput {
