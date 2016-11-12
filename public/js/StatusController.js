@@ -29,7 +29,7 @@ angular.module("webPet") // attach a controller to the module
     }
 
     this.feed = () => {
-      $scope.HungerService.reduceHunger();
+      $scope.HungerService.decrementHungerLvl(1);
       this.updateOnPlayerAction();
     }
 
