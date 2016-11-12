@@ -1,11 +1,13 @@
 angular.module("webPet") // attach a controller to the module
 .controller( 'StatusController',
   ['$scope',
+  'TimerService',
   'HealthService',
   'HungerService',
   'HappinessService',
   'EnergyService',
-  ($scope, HealthService, HungerService, HappinessService, EnergyService) => {
+  ($scope, TimerService, HealthService, HungerService, HappinessService, EnergyService) => {
+    TimerService.startTimer();
     $scope.petName = 'doggie';
     $scope.health = HealthService.getHealth();
     $scope.hunger = HungerService.getHungerLvl();
