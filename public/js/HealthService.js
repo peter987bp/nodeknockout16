@@ -1,5 +1,5 @@
 angular.module("webPet")
-  .service('StatusService', function() {
+  .service('HealthService', function() {
     const maxHealth = 10;
     this.health = maxHealth;
 
