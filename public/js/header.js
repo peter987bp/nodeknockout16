@@ -1,6 +1,6 @@
-angular.module('webPet') // attach a controller to the module
-.controller( 'header', ['$scope',
-  ($scope) => {
+angular.module("webPet") // attach a controller to the module
+.controller( 'header',  ['$scope', 'StatusService',
+  ($scope, StatusService) => {
     $scope.petName = 'doggie';
-    $scope.health = 'max';
+    $scope.health = StatusService.getHealth();
   }]);
