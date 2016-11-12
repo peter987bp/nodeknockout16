@@ -9,7 +9,7 @@
   <h1>WebPET</h1>
   <div id="main">
     <div id="petDisplay" ng-controller="petController">
-      <div ng-controller="header">
+      <div ng-controller="StatusController">
         <h2>name: {{petName}}</h2>
         <h2>health: {{health}}</h2>
       </div>
@@ -21,7 +21,10 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
   <script type="text/javascript" src="/js/anim_states.js"></script>
-  <script type="text/javascript" src="/js/header.js"></script>
-  <script type="text/javascript" src="/js/StatusService.js"></script>
+  <script type="text/javascript" src="/js/StatusController.js"></script>
+  <script type="text/javascript" src="/js/HealthService.js"></script>
+  <script type="text/javascript" src="/js/HappinessService.js"></script>
+  <script type="text/javascript" src="/js/HungerService.js"></script>
+  <script type="text/javascript" src="/js/EnergyService.js"></script>
 </body>
 </html>
