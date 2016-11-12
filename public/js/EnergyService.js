@@ -15,4 +15,12 @@ angular.module("webPet")
       this.energyLvl -= value;
       return this.energyLvl;
     }
+    this.reduceEnergy = () => {
+      if(this.energyLvl - 1 <= 0) {
+        this.energyLvl = 0
+        HealthService.reduceHealth();
+      } else {
+        --this.energyLvl;
+      }
+    }
   })
