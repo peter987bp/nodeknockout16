@@ -1,0 +1,40 @@
+body {
+  background-color: #444;
+}
+
+h1 {
+  width: 680px;
+  margin: auto;
+  color: #ddd;
+  font-family: monospace;
+  font-size: 48px;
+  text-shadow: 2px 2px 2px #222;
+}
+
+#main {
+  background-color: #ddd;
+  box-sizing: border-box;
+  width: 680px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 2px;
+  border: 1px solid #222;
+  box-shadow: 2px 2px 2px #222;
+}
+
+#petDisplay {
+  box-sizing: border-box;
+  width: 640px;
+  background-color: #222;
+  color: #ddd;
+  font-family: monospace;
+  font-size: 12px;
+  height: 360px;
+}
+
+#cliInput {
+  box-sizing: border-box;
+  background-color: #444;
+  width: 640px;
+  border: 2px solid #333;
+}
