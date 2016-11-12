@@ -8,4 +8,12 @@ angular.module("webPet")
     this.getHungerLvl = () => {
       return this.hungerLvl
     }
+    this.incrementHungerLvl = (value) => {
+      this.hungerLvl += value;
+      return this.hungerLvl;
+    }
+    this.decrementHungerLvl = (value) => {
+      this.hungerLvl -= value;
+      return this.hungerLvl;
+    }
   })

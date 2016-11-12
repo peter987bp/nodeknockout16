@@ -7,4 +7,12 @@ angular.module("webPet")
     this.getHappinessLvl = () => {
       return this.happinessLvl;
     }
+    this.incrementHappinessLvl = (value) => {
+      this.happinessLvl += value;
+      return this.happinessLvl;
+    }
+    this.decrementHappinessLvl = (value) => {
+      this.happinessLvl -= value;
+      return this.happinessLvl;
+    }
   })

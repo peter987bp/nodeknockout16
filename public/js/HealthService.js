@@ -7,4 +7,12 @@ angular.module("webPet")
     this.getHealth = () => {
       return this.health;
     }
+    this.incrementHealth = (value) => {
+      this.health += value;
+      return this.health;
+    }
+    this.decrementHealth = (value) => {
+      this.health -= value;
+      return this.health;
+    }
   })
