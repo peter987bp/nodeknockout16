@@ -8,6 +8,7 @@ angular.module("webPet") // attach a controller to the module
     $scope.hunger = $scope.HungerService.getHungerLvl();
     $scope.happiness = $scope.HappinessService.getHappinessLvl();
     $scope.energy = $scope.EnergyService.getEnergyLvl();
+    $scope.pooped = $scope.PoopService.pooped;
 
     $scope.input = '';
 
@@ -16,6 +17,7 @@ angular.module("webPet") // attach a controller to the module
       $scope.hunger = $scope.HungerService.getHungerLvl();
       $scope.happiness = $scope.HappinessService.getHappinessLvl();
       $scope.energy = $scope.EnergyService.getEnergyLvl();
+      $scope.pooped = $scope.PoopService.pooped;
     }, 1000);
 
     this.feed = () => {
@@ -27,6 +29,7 @@ angular.module("webPet") // attach a controller to the module
     }
 
     this.clean = () => {
+      $scope.PoopService.cleanPoop();
     }
 
     this.wake = () => {

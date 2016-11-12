@@ -1,7 +1,7 @@
 angular.module("webPet")
 .service('HungerService', [
   'HappinessService',
-  function() {
+  function(HappinessService) {
 
     this._scope = null;
     const maxHunger = 10;
