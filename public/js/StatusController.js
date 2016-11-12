@@ -20,16 +20,27 @@ angular.module("webPet") // attach a controller to the module
       $scope.pooped = $scope.PoopService.pooped;
     }, 1000);
 
+    this.updateOnPlayerAction = () => {
+      $scope.health = $scope.HealthService.getHealth();
+      $scope.hunger = $scope.HungerService.getHungerLvl();
+      $scope.happiness = $scope.HappinessService.getHappinessLvl();
+      $scope.energy = $scope.EnergyService.getEnergyLvl();
+      $scope.pooped = $scope.PoopService.pooped;
+    }
+
     this.feed = () => {
       $scope.HungerService.reduceHunger();
+      this.updateOnPlayerAction();
     }
 
     this.play = () => {
       $scope.HappinessService.incrementHappinessLvl(1);
+      this.updateOnPlayerAction();
     }
 
     this.clean = () => {
       $scope.PoopService.cleanPoop();
+      this.updateOnPlayerAction();
     }
 
     this.wake = () => {
