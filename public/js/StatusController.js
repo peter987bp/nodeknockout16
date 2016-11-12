@@ -26,6 +26,8 @@ angular.module("webPet") // attach a controller to the module
       this.resetStatus();
     }
 
+
+
     $scope.read = () => {
       if ($scope.input === 'feed') {
         this.feed();
