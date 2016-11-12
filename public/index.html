@@ -5,16 +5,22 @@
   <title>WebPET</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
-<body>
+<body ng-app="myApp">
   <h1>WebPET</h1>
   <div id="main">
     <div id="petDisplay">
+      <div ng-controller="header">
+        <h2>name: {{petName}}</h2>
+        <h2>health: {{health}}</h2>
+      </div>
       <!-- 80 chars: ################################################################################ -->
     </div>
     <input type="text" id="cliInput">
   </div>
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
   <script type="text/javascript" src="/js/anim_states.js"></script>
+  <script type="text/javascript" src="/js/header.js"></script>
 </body>
 </html>
