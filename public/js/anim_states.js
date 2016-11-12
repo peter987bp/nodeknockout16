@@ -19,6 +19,25 @@ angular.module("webPet")
   "   ███ ████     \n"
 )
 .constant(
+  'PET_BASE_FRAME2',
+  "                \n" +
+  "  ██      ██    \n" +
+  " █##█    █##█   \n" +
+  " █  █    █  █   \n" +
+  "  █  ████  █  █ \n" +
+  "   █      █  █  \n" +
+  "  █ █   █  █ █  \n" +
+  "  █ █   █  █  █ \n" +
+  " █ # ██  #  █ █ \n" +
+  " █  █       █ █ \n" +
+  "  ███  █#█ █  █ \n" +
+  " █#█#██ █   █ █ \n" +
+  "  ██    ██# ██  \n" +
+  "   ██##██  ██   \n" +
+  "  █   █   ██    \n" +
+  "   ███ ████     \n"
+)
+.constant(
   'EGG_BASE_FRAME1',
   "     ██████   \n" +
   "    █   ████    \n" +
@@ -58,7 +77,7 @@ angular.module("webPet")
   "      POOP      \n"
 )
 .constant(
-  'POOP_BASE_FRAME1',
+  'POOP_BASE_FRAME2',
   "                \n" +
   "                \n" +
   "                \n" +
