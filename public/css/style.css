@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
 body {
   background-color: #444;
+  font-family: 'Source Code Pro', monospace;
 }
 
 h1 {
   width: 680px;
   margin: auto;
   color: #ddd;
-  font-family: monospace;
   font-size: 48px;
   text-shadow: 2px 2px 2px #222;
 }
@@ -26,7 +28,6 @@ h1 {
   width: 640px;
   background-color: #222;
   color: #ddd;
-  font-family: monospace;
   font-size: 14px;
   padding: 20px;
   height: 360px;
