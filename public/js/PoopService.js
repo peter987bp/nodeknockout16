@@ -16,7 +16,7 @@ angular.module("webPet")
 
       this.watchPoop = setInterval(() => {
         if (this._scope.HealthService.isAlive) {
-          if(this._scope.timer % 10 === 0 && this._scope.timer !== 0) {
+          if(this._scope.timer % 60 === 0 && this._scope.timer !== 0) {
             this.pooped = true;
           }
           if (this.pooped ) {
