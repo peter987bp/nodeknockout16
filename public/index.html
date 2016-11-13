@@ -10,11 +10,19 @@
   <div ng-controller="TimeController">
     <div id="main" ng-controller="StatusController">
       <div id="petDisplay">
-        <div>name: {{petName}}</div>
-        <div>health: {{health}}</div>
-        <div>hunger: {{hunger}}</div>
-        <div>energy: {{energy}}</div>
-        <div>happiness: {{happiness}}</div>
+        <div id="stats">
+          <div>name: {{petName}}</div>
+          <div>health: {{health}}</div>
+          <div>hunger: {{hunger}}</div>
+          <div>energy: {{energy}}</div>
+          <div>happiness: {{happiness}}</div>
+        </div>
+        <div id="command-list">
+          <div>"clean" - clean up poop</div>
+          <div>"feed" - reduce hunger</div>
+          <div>"play" - increase happiness</div>
+          <div>"wake" - wake up pet</div>
+        </div>
         <div id="graphics">
           <p id="pet" ng-controller="animController">{{petState}}</p>
           <p id="poop" ng-controller="animController">{{poopState}}</p>
