@@ -1,7 +1,6 @@
 angular.module("webPet").controller("animController", [
   '$scope',
   '$interval',
-  '$timeout',
   'PET_BASE_FRAME1',
   'PET_BASE_FRAME2',
   'EGG_BASE_FRAME1',
@@ -25,7 +24,6 @@ angular.module("webPet").controller("animController", [
   (
     $scope,
     $interval,
-    $timeout,
     PET_BASE_FRAME1,
     PET_BASE_FRAME2,
     EGG_BASE_FRAME1,
@@ -98,7 +96,6 @@ angular.module("webPet").controller("animController", [
           }
 
           if($scope._playing) {
-            console.log('scope.playing triggered in anim state', $scope._playing);
             $scope.petState = $scope.playFrames[$scope.timer % 2];
           }
         }
