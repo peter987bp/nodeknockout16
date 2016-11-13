@@ -34,7 +34,7 @@ angular.module("webPet", [])
 
     $scope.die = () => {
       //display death frames, then stop animation entirely
-      cancel(this.animate);
+      $interval.cancel(this.animate);
     }
 
   }
