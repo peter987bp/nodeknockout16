@@ -1,6 +1,9 @@
 angular.module("webPet")
-  .service('EnergyService', ['HealthService', 'HappinessService',
-    function(HealthService, HappinessService) {
+  .service('EnergyService', [
+    'HealthService',
+    'HappinessService',
+    '$interval',
+    function(HealthService, HappinessService, $interval) {
     const maxEnergy = 10;
     const energyLvl = 5;
 
@@ -64,16 +67,23 @@ angular.module("webPet")
     }
 
     this.goToSleep = setInterval(() => {
-      if(this._scope.timer % 40 === 0 && this._scope.timer !== 0) {
-        this.awake = false;
-        this.incrementEnergyLvl(1);
-        console.log('went to sleep');
+      if (this._scope.HealthService.isAlive) {
+        if(this._scope.timer % 30 === 0 && this._scope.timer !== 0) {
+          this.awake = false;
+          this.incrementEnergyLvl(1);
+        }
+      } else {
+        $interval.cancel(this.goToSleep);
       }
     }, 1000);
 
     this.watchEnergy = setInterval(() => {
-      if(this._scope.timer % 40 === 0 && this._scope.timer !== 0) {
-        this.decrementEnergyLvl(1);
+      if (this._scope.HealthService.isAlive) {
+        if(this._scope.timer % 40 === 0 && this._scope.timer !== 0) {
+          this.decrementEnergyLvl(1);
+        }
+      } else {
+        $interval.cancel(this.watchEnergy);
       }
     }, 1000);
 
