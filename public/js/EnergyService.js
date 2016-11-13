@@ -63,11 +63,12 @@ angular.module("webPet")
       this.awake = true;
     }
 
-    // this.goToSleep = setInterval(() => {
-    //   if(this._scope.timer % 90 === 0 && this._scope.timer !== 0) {
-    //     this.awake = false;
-    //   }
-    // }, 1000);
+    this.goToSleep = setInterval(() => {
+      if(this._scope.timer % 30 === 0 && this._scope.timer !== 0) {
+        this.awake = false;
+        this.incrementEnergyLvl(2);
+      }
+    }, 1000);
 
     this.watchEnergy = setInterval(() => {
       if(this._scope.timer % 40 === 0 && this._scope.timer !== 0) {
