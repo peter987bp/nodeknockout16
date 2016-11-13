@@ -63,8 +63,10 @@ h1 {
 
 
 #cliInput {
+  font-family: 'Source Code Pro', monospace;
   box-sizing: border-box;
   background-color: #444;
+  color: #ddd;
   width: 640px;
   border: 2px solid #333;
 }
