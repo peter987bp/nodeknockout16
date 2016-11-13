@@ -7,7 +7,7 @@ angular.module("webPet") // attach a controller to the module
     $scope.health = $scope.HealthService.getHealth();
     $scope.hunger = $scope.HungerService.getHungerLvl();
     $scope.happiness = $scope.HappinessService.getHappinessLvl();
-    $scope.energy = $scope.EnergyService.getEnergyLvl();
+    $scope.energy = $scope.EnergyService.energyLvl;
     $scope.pooped = $scope.PoopService.pooped;
     $scope.awake = $scope.EnergyService.awake;
 
@@ -18,9 +18,9 @@ angular.module("webPet") // attach a controller to the module
         $scope.health = $scope.HealthService.getHealth();
         $scope.hunger = $scope.HungerService.getHungerLvl();
         $scope.happiness = $scope.HappinessService.getHappinessLvl();
-        $scope.energy = $scope.EnergyService.getEnergyLvl();
+        $scope.energy = $scope.EnergyService.energyLvl;
         $scope.pooped = $scope.PoopService.pooped;
-        $scope.awake = $scope.EnergyService.getAwake();
+        $scope.awake = $scope.EnergyService.awake;
       }
     }, 1000);
 
@@ -28,7 +28,7 @@ angular.module("webPet") // attach a controller to the module
       $scope.health = $scope.HealthService.getHealth();
       $scope.hunger = $scope.HungerService.getHungerLvl();
       $scope.happiness = $scope.HappinessService.getHappinessLvl();
-      $scope.energy = $scope.EnergyService.getEnergyLvl();
+      $scope.energy = $scope.EnergyService.energyLvl;
       $scope.pooped = $scope.PoopService.pooped;
       $scope.awake = $scope.EnergyService.awake;
     }
