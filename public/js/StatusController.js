@@ -3,11 +3,25 @@ angular.module("webPet") // attach a controller to the module
   ['$scope',
   '$interval',
   ($scope, $interval) => {
+    this.statusLvl = [
+      '[░░░░░░░░░░]',
+      '[█░░░░░░░░░]',
+      '[██░░░░░░░░]',
+      '[███░░░░░░░]',
+      '[████░░░░░░]',
+      '[█████░░░░░]',
+      '[██████░░░░]',
+      '[███████░░░]',
+      '[████████░░]',
+      '[█████████░]',
+      '[██████████]'
+    ]
+
     $scope.petName = 'doggie';
-    $scope.health = $scope.HealthService.getHealth();
-    $scope.hunger = $scope.HungerService.getHungerLvl();
-    $scope.happiness = $scope.HappinessService.getHappinessLvl();
-    $scope.energy = $scope.EnergyService.energyLvl;
+    $scope.health = this.statusLvl[$scope.HealthService.getHealth()];
+    $scope.hunger = this.statusLvl[$scope.HungerService.getHungerLvl()];
+    $scope.happiness = this.statusLvl[$scope.HappinessService.getHappinessLvl()];
+    $scope.energy = this.statusLvl[$scope.EnergyService.energyLvl];
     $scope.pooped = $scope.PoopService.pooped;
     $scope.awake = $scope.EnergyService.awake;
 
@@ -15,10 +29,10 @@ angular.module("webPet") // attach a controller to the module
 
     this.updateStatus = $interval (() => {
       if ($scope.HealthService.isAlive) {
-        $scope.health = $scope.HealthService.getHealth();
-        $scope.hunger = $scope.HungerService.getHungerLvl();
-        $scope.happiness = $scope.HappinessService.getHappinessLvl();
-        $scope.energy = $scope.EnergyService.energyLvl;
+        $scope.health = this.statusLvl[$scope.HealthService.getHealth()];
+        $scope.hunger = this.statusLvl[$scope.HungerService.getHungerLvl()];
+        $scope.happiness = this.statusLvl[$scope.HappinessService.getHappinessLvl()];
+        $scope.energy = this.statusLvl[$scope.EnergyService.energyLvl];
         $scope.pooped = $scope.PoopService.pooped;
         $scope.awake = $scope.EnergyService.awake;
       } else {
@@ -27,10 +41,10 @@ angular.module("webPet") // attach a controller to the module
     }, 1000);
 
     this.updateOnPlayerAction = () => {
-      $scope.health = $scope.HealthService.getHealth();
-      $scope.hunger = $scope.HungerService.getHungerLvl();
-      $scope.happiness = $scope.HappinessService.getHappinessLvl();
-      $scope.energy = $scope.EnergyService.energyLvl;
+      $scope.health = this.statusLvl[$scope.HealthService.getHealth()];
+      $scope.hunger = this.statusLvl[$scope.HungerService.getHungerLvl()];
+      $scope.happiness = this.statusLvl[$scope.HappinessService.getHappinessLvl()];
+      $scope.energy = this.statusLvl[$scope.EnergyService.energyLvl];
       $scope.pooped = $scope.PoopService.pooped;
       $scope.awake = $scope.EnergyService.awake;
     }
