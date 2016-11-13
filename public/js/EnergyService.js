@@ -68,9 +68,9 @@ angular.module("webPet")
 
     this.goToSleep = setInterval(() => {
       if (this._scope.HealthService.isAlive) {
-        if(this._scope.timer % 30 === 0 && this._scope.timer !== 0) {
+        if(this._scope.timer % 90 === 0 && this._scope.timer !== 0) {
           this.awake = false;
-          this.incrementEnergyLvl(1);
+          this.incrementEnergyLvl(2);
           console.log('Brrr, went to sleep');
         }
       } else {
