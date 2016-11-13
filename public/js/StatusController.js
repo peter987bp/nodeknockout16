@@ -57,6 +57,10 @@ angular.module("webPet") // attach a controller to the module
     }
 
     this.wake = () => {
+      if ($scope.HealthService.isAlive) {
+        $scope.EnergyService.wakeUp();
+        this.updateOnPlayerAction();
+      }
     }
 
     $scope.read = () => {

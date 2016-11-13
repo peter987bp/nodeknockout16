@@ -60,4 +60,8 @@ angular.module("webPet")
       }
     }
 
+    this.wakeUp = () => {
+      this.awake = true;
+    }
+
   }])
