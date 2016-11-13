@@ -32,11 +32,25 @@ h1 {
   height: 360px;
 }
 
+#graphics {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 #pet {
   width: 240px;
   white-space: pre-wrap;
   transform: scaleY(0.5);
 }
+
+#poop {
+  width: 240px;
+  white-space: pre-wrap;
+  transform: scaleY(0.5);
+}
+
 
 #cliInput {
   box-sizing: border-box;

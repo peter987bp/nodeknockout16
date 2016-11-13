@@ -14,13 +14,6 @@ angular.module("webPet")
       this.awake = true;
     }
 
-    this.getEnergyLvl = () => {
-      return this.energyLvl;
-    }
-    this.getAwake = () => {
-      return this.awake;
-    }
-    //if energyLvl is 10 > no increment, reach 10 && increment hapiness
     this.incrementEnergyLvl = (value) => {
       if (this.energyLvl === 10) {
         // already 'energetic', ??message
@@ -37,7 +30,7 @@ angular.module("webPet")
         return this.energyLvl;
       }
     }
-    // if energyLvl is 0 > going to sleep && decrement Health
+
     this.decrementEnergyLvl = (value) => {
       if (this.energyLvl === 0) {
         // sleeping 'exhausted' ??message
