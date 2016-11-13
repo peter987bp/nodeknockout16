@@ -56,8 +56,6 @@ angular.module("webPet")
       }
     }
 
-
-
     this.reduceEnergy = () => {
       if(this.energyLvl - 1 <= 0) {
         this.energyLvl = 0
@@ -66,5 +64,11 @@ angular.module("webPet")
         --this.energyLvl;
       }
     }
+
+    this.goToSleep = setInterval(() => {
+      if(this._scope.timer % 90 === 0 && this._scope.timer !== 0) {
+        this.awake = false;
+      }
+    }, 1000);
 
   }])
