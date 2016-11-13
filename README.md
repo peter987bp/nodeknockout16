@@ -13,6 +13,9 @@ After you makes it live, you have to keep it alive by carrying trough activities
 
 - give a name for your WebPET  
 
+### Goal
+Keep WebPET alive, means healthy otherwise it can die.
+
 ### Rules
  
 WebPet starts the life happy and healthy
