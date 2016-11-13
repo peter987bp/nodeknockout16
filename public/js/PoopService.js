@@ -1,7 +1,8 @@
 angular.module("webPet")
   .service('PoopService', [
     'HappinessService',
-    function(HappinessService) {
+    '$interval',
+    function(HappinessService, $interval) {
       this.pooped = false;
 
       this.init = (scope) => {
@@ -14,11 +15,16 @@ angular.module("webPet")
       }
 
       this.watchPoop = setInterval(() => {
-        if(this._scope.timer % 60 === 0 && this._scope.timer !== 0) {
-          this.pooped = true;
-        }
-        if (this.pooped) {
-          HappinessService.decrementHappinessLvl(1);
+        if (this._scope.HealthService.isAlive) {
+          if(this._scope.timer % 60 === 0 && this._scope.timer !== 0) {
+            this.pooped = true;
+          }
+          if (this.pooped ) {
+            HappinessService.decrementHappinessLvl(1);
+          }
+
+        } else {
+          $interval.cancel(this.watchPoop);
         }
       }, 1000);
 
