@@ -16,6 +16,9 @@ After you makes it live, you have to keep it alive by carrying trough activities
 ### Goal
 Keep WebPET alive, means healthy otherwise it can die.
 
+### How to play
+Type activity command into command line and monitor pet health to be high.
+
 ### Rules
  
 WebPet starts the life happy and healthy
@@ -25,10 +28,11 @@ You  can monitor your pet's health on screen
 - energy
 - happiness
 
-You can keep it healthy by
-- feeding
-- playing
-- cleaning poops
+You can keep it healthy by typing activity commands:
+- "feed" -> feeding: lower the hunger
+- " play" -> playing: increase hapiness
+- "clean" -> cleaning poops: uncleaned poops decrease hapiness and eventually the health of the pet
+- "wake" -> waking: let pet awake and capable to other activities 
 
 WebPet is going to sleep when it's feel tired and gaining energy during the sleep.
 Also, it is going to sleep if its energy level has been exhausted to 0.
