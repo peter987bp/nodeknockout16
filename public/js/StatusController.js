@@ -50,16 +50,20 @@ angular.module("webPet") // attach a controller to the module
     }
 
     this.feed = () => {
-      if ($scope.HealthService.isAlive) {
+      if ($scope.HealthService.isAlive && $scope.awake) {
         $scope.HungerService.decrementHungerLvl(1);
         this.updateOnPlayerAction();
+      } else if (!$scope.awake) {
+          console.log('Daaa, I am sleeping');
       }
     }
 
     this.play = () => {
-      if ($scope.HealthService.isAlive) {
+      if ($scope.HealthService.isAlive && $scope.awake) {
         $scope.HappinessService.incrementHappinessLvl(1);
         this.updateOnPlayerAction();
+      } else if (!$scope.awake) {
+          console.log('Daaa, I am sleeping');
       }
     }
 
@@ -71,9 +75,11 @@ angular.module("webPet") // attach a controller to the module
     }
 
     this.wake = () => {
-      if ($scope.HealthService.isAlive) {
+      if ($scope.HealthService.isAlive && !$scope.awake) {
         $scope.EnergyService.wakeUp();
         this.updateOnPlayerAction();
+      } else if ($scope.awake) {
+          console.log('Daaa, I am awake');
       }
     }
 
