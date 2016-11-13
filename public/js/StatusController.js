@@ -28,6 +28,9 @@ angular.module("webPet") // attach a controller to the module
     $scope.playing = false;
     $scope.feeding = false;
 
+    $scope.playCalled = 0;
+    $scope.feedCalled = 0;
+
     $scope.input = '';
 
     this.updateStatus = $interval (() => {
@@ -56,9 +59,8 @@ angular.module("webPet") // attach a controller to the module
     }
 
     this.feed = () => {
-      console.log('$scope.feedingstate: ', $scope.feeding);
       $scope.feeding = true;
-      console.log('$scope.feedingstate: ', $scope.feeding);
+      $scope.feedCalled = $scope.timer;
       if ($scope.HealthService.isAlive && $scope.awake) {
         $scope.HungerService.decrementHungerLvl(1);
         this.updateOnPlayerAction();
@@ -69,6 +71,7 @@ angular.module("webPet") // attach a controller to the module
 
     this.play = () => {
       $scope.playing = true;
+      $scope.playCalled = $scope.timer;
       if ($scope.HealthService.isAlive && $scope.awake) {
         $scope.HappinessService.incrementHappinessLvl(1);
         this.updateOnPlayerAction();

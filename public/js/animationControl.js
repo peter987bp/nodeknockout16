@@ -64,42 +64,53 @@ angular.module("webPet").controller("animController", [
     this.animate = $interval(() => {
       //iterate through animation frames in a continuous loop
       //change frame array as state changes in parent
-      if($scope.isAlive === true){
+      if($scope.isAlive) {
+
         if($scope.timer < 8) {
 
         //hatch during the first few frames
-        $scope.petState = $scope.eggHatchFrames[$scope.timer % $scope.eggHatchFrames.length];
+          $scope.petState = $scope.eggHatchFrames[$scope.timer % $scope.eggHatchFrames.length];
+        } else if (!$scope.awake) {
+          //asleep
+          $scope.petState = $scope.sleepFrames[$scope.timer % $scope.sleepFrames.length];
+          if($scope.pooped) {
+            $scope.poopState = $scope.poopFrames[$scope.timer % 2];
+          } else if($scope.feeding) {
+            $scope.poopState = $scope.eatFrames[$scope.timer % $scope.eatFrames.length];
+            if($scope.timer - $scope.feedCalled >= 5 && $scope.feedCalled !== 0) {
+              $scope.feeding = false;
+              $scope.feedCalled = 0;
+            }
+          } else {
+            $scope.poopState = "";
+          }
         } else {
-          //main state
-          //base state -  nothing happening
           $scope.petState = $scope.baseFrames[$scope.timer % 2];
           //check if pooped, asleep, or playing and change animation accordingly
           if($scope.pooped) {
             $scope.poopState = $scope.poopFrames[$scope.timer % 2];
-          } else if(!$scope.pooped) {
+          } else if($scope.feeding) {
+            $scope.poopState = $scope.eatFrames[$scope.timer % $scope.eatFrames.length];
+            if($scope.timer - $scope.feedCalled >= 5 && $scope.feedCalled !== 0) {
+              $scope.feeding = false;
+              $scope.feedCalled = 0;
+            }
+          } else {
             $scope.poopState = "";
           }
-          if($scope.playing) {
-            $scope.petState = $scope.playFrames[$scope.timer % 2];
-            $timeout(() => {
-              $scope.playing = false;
-            }, 5000)
-          } else if(!$scope.playing) {
-            $scope.petState = $scope.baseFrames[$scope.timer % 2];
-          }
-          if($scope.feeding) {
-            $scope.poopState = $scope.eatFrames[$scope.timer % 4];
-            $timeout(() => {
-              console.log('$scope.feeding: ', $scope.feeding);
-              $scope.feeding = false;
-              console.log('$scope.feeding: ', $scope.feeding);
 
-            }, 4000)
-          } else if(!$scope.feeding) {
-            $scope.poopState = '';
+          if($scope.playing) {
+            console.log('scope.playing triggered in anim state', $scope.playing);
+            $scope.petState = $scope.playFrames[$scope.timer % 2];
+            if(($scope.timer - $scope.playCalled) >= 5 && $scope.playCalled !== 0) {
+              $scope.playing = false;
+              $scope.playCalled = 0;
+              $scope.petState = $scope.baseFrames[$scope.timer % 2];
+            }
           }
         }
-      }else{
+
+      } else {
         $interval.cancel(this.animate);
         $scope.petState = '';
         $scope.petState = $scope.dieFrames[0];
