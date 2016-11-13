@@ -71,6 +71,7 @@ angular.module("webPet")
         if(this._scope.timer % 30 === 0 && this._scope.timer !== 0) {
           this.awake = false;
           this.incrementEnergyLvl(1);
+          console.log('Brrr, went to sleep');
         }
       } else {
         $interval.cancel(this.goToSleep);
