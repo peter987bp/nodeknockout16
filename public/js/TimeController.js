@@ -22,25 +22,27 @@ angular.module("webPet")
 
       $scope.timer = 0;
       this.countUp;
-      this.killTimer = this.killTimer.bind(this);
+
 
       this.startTimer = () => {
-        this.countDown = setInterval(() => {
+        this.countUp = setInterval(() => {
           $scope.timer++;
           console.log('tick');
         }, 1000);
       }
 
       this.startTimer();
-    }
 
-    killTimer() {
-      clearInterval(this.countDown);
-      resetTimer();
-    }
+      this.killTimer = () => {
+        clearInterval(this.countUp);
+        this.resetTimer();
+      }
 
-    resetTimer() {
-      $scope.timer = 0;
+      $scope.killTimer = this.killTimer;
+
+      this.resetTimer = () => {
+        $scope.timer = 0;
+      }
     }
   }
 ]);
