@@ -21,6 +21,8 @@ angular.module("webPet") // attach a controller to the module
         $scope.energy = $scope.EnergyService.energyLvl;
         $scope.pooped = $scope.PoopService.pooped;
         $scope.awake = $scope.EnergyService.awake;
+      } else {
+        $interval.cancel(this.updateStatus);
       }
     }, 1000);
 
