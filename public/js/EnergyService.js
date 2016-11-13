@@ -13,7 +13,8 @@ angular.module("webPet")
       this.energyLvl = energyLvl;
       this.awake = true;
     }
-
+    // high energy increase hapiness
+    // low energy decrease health
     this.incrementEnergyLvl = (value) => {
       if (this.energyLvl === 10) {
         // already 'energetic', ??message
@@ -38,7 +39,7 @@ angular.module("webPet")
         return this.energyLvl;
       } else {
         this.energyLvl -= value;
-        if (this.energyLvl < 0 ) {
+        if (this.energyLvl <= 0 ) {
           this.energyLvl = 0;
           HealthService.decrementHealth(1);
           //message 'exhausted'
@@ -62,9 +63,15 @@ angular.module("webPet")
       this.awake = true;
     }
 
-    this.goToSleep = setInterval(() => {
-      if(this._scope.timer % 90 === 0 && this._scope.timer !== 0) {
-        this.awake = false;
+    // this.goToSleep = setInterval(() => {
+    //   if(this._scope.timer % 90 === 0 && this._scope.timer !== 0) {
+    //     this.awake = false;
+    //   }
+    // }, 1000);
+
+    this.watchEnergy = setInterval(() => {
+      if(this._scope.timer % 40 === 0 && this._scope.timer !== 0) {
+        this.decrementEnergyLvl(1);
       }
     }, 1000);
 
