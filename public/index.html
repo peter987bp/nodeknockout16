@@ -15,8 +15,10 @@
         <div>hunger: {{hunger}}</div>
         <div>energy: {{energy}}</div>
         <div>happiness: {{happiness}}</div>
-
-        <p id="pet" ng-controller="animController">{{petState}}</p>
+        <div id="graphics">
+          <p id="pet" ng-controller="animController">{{petState}}</p>
+          <p id="poop" ng-controller="animController">{{poopState}}</p>
+        </div>
       </div>
       <form ng-submit="read()">
         <input type="text" id="cliInput" ng-model="input" autofocus>
@@ -34,5 +36,6 @@
   <script type="text/javascript" src="/js/HappinessService.js"></script>
   <script type="text/javascript" src="/js/HungerService.js"></script>
   <script type="text/javascript" src="/js/EnergyService.js"></script>
+  <script type="text/javascript" src="/js/PoopService.js"></script>
 </body>
 </html>
