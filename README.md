@@ -1,6 +1,7 @@
 # WebPET
 
-WebPET picture 
+[Get you WebPET!](/images/pic2.jpg)
+
 WebPET is your best friend who is with you when you working long hours on the Web lonely. 
 After you makes it live, you have to keep it alive by carrying trough activities like feeding, playing and cleaning its poop. You'll never gonna be alone anymore. This is the beginning of a beautiful friendship. :)
 
