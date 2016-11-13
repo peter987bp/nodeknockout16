@@ -3,11 +3,25 @@ angular.module("webPet") // attach a controller to the module
   ['$scope',
   '$interval',
   ($scope, $interval) => {
+    this.statusLvl = [
+      '[░░░░░░░░░░]',
+      '[█░░░░░░░░░]',
+      '[██░░░░░░░░]',
+      '[███░░░░░░░]',
+      '[████░░░░░░]',
+      '[█████░░░░░]',
+      '[██████░░░░]',
+      '[███████░░░]',
+      '[████████░░]',
+      '[█████████░]',
+      '[██████████]'
+    ]
+
     $scope.petName = 'doggie';
-    $scope.health = $scope.HealthService.getHealth();
-    $scope.hunger = $scope.HungerService.getHungerLvl();
-    $scope.happiness = $scope.HappinessService.getHappinessLvl();
-    $scope.energy = $scope.EnergyService.energyLvl;
+    $scope.health = this.statusLvl[$scope.HealthService.getHealth()];
+    $scope.hunger = this.statusLvl[$scope.HungerService.getHungerLvl()];
+    $scope.happiness = this.statusLvl[$scope.HappinessService.getHappinessLvl()];
+    $scope.energy = this.statusLvl[$scope.EnergyService.energyLvl];
     $scope.pooped = $scope.PoopService.pooped;
     $scope.awake = $scope.EnergyService.awake;
     $scope.isAlive = $scope.HealthService.isAlive;
@@ -18,10 +32,10 @@ angular.module("webPet") // attach a controller to the module
 
     this.updateStatus = $interval (() => {
       if ($scope.HealthService.isAlive) {
-        $scope.health = $scope.HealthService.getHealth();
-        $scope.hunger = $scope.HungerService.getHungerLvl();
-        $scope.happiness = $scope.HappinessService.getHappinessLvl();
-        $scope.energy = $scope.EnergyService.energyLvl;
+        $scope.health = this.statusLvl[$scope.HealthService.getHealth()];
+        $scope.hunger = this.statusLvl[$scope.HungerService.getHungerLvl()];
+        $scope.happiness = this.statusLvl[$scope.HappinessService.getHappinessLvl()];
+        $scope.energy = this.statusLvl[$scope.EnergyService.energyLvl];
         $scope.pooped = $scope.PoopService.pooped;
         $scope.awake = $scope.EnergyService.awake;
         $scope.isAlive = $scope.HealthService.isAlive;
@@ -31,10 +45,10 @@ angular.module("webPet") // attach a controller to the module
     }, 1000);
 
     this.updateOnPlayerAction = () => {
-      $scope.health = $scope.HealthService.getHealth();
-      $scope.hunger = $scope.HungerService.getHungerLvl();
-      $scope.happiness = $scope.HappinessService.getHappinessLvl();
-      $scope.energy = $scope.EnergyService.energyLvl;
+      $scope.health = this.statusLvl[$scope.HealthService.getHealth()];
+      $scope.hunger = this.statusLvl[$scope.HungerService.getHungerLvl()];
+      $scope.happiness = this.statusLvl[$scope.HappinessService.getHappinessLvl()];
+      $scope.energy = this.statusLvl[$scope.EnergyService.energyLvl];
       $scope.pooped = $scope.PoopService.pooped;
       $scope.awake = $scope.EnergyService.awake;
       $scope.isAlive = $scope.HealthService.isAlive;
@@ -45,17 +59,21 @@ angular.module("webPet") // attach a controller to the module
       console.log('$scope.feedingstate: ', $scope.feeding);
       $scope.feeding = true;
       console.log('$scope.feedingstate: ', $scope.feeding);
-      if ($scope.HealthService.isAlive) {
+      if ($scope.HealthService.isAlive && $scope.awake) {
         $scope.HungerService.decrementHungerLvl(1);
         this.updateOnPlayerAction();
+      } else if (!$scope.awake) {
+          console.log('Daaa, I am sleeping');
       }
     }
 
     this.play = () => {
       $scope.playing = true;
-      if ($scope.HealthService.isAlive) {
+      if ($scope.HealthService.isAlive && $scope.awake) {
         $scope.HappinessService.incrementHappinessLvl(1);
         this.updateOnPlayerAction();
+      } else if (!$scope.awake) {
+          console.log('Daaa, I am sleeping');
       }
     }
 
@@ -67,9 +85,11 @@ angular.module("webPet") // attach a controller to the module
     }
 
     this.wake = () => {
-      if ($scope.HealthService.isAlive) {
+      if ($scope.HealthService.isAlive && !$scope.awake) {
         $scope.EnergyService.wakeUp();
         this.updateOnPlayerAction();
+      } else if ($scope.awake) {
+          console.log('Daaa, I am awake');
       }
     }
 

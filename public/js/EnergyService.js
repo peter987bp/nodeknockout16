@@ -1,6 +1,9 @@
 angular.module("webPet")
-  .service('EnergyService', ['HealthService', 'HappinessService',
-    function(HealthService, HappinessService) {
+  .service('EnergyService', [
+    'HealthService',
+    'HappinessService',
+    '$interval',
+    function(HealthService, HappinessService, $interval) {
     const maxEnergy = 10;
     const energyLvl = 5;
 
@@ -13,7 +16,8 @@ angular.module("webPet")
       this.energyLvl = energyLvl;
       this.awake = true;
     }
-
+    // high energy increase hapiness
+    // low energy decrease health
     this.incrementEnergyLvl = (value) => {
       if (this.energyLvl === 10) {
         // already 'energetic', ??message
@@ -38,11 +42,11 @@ angular.module("webPet")
         return this.energyLvl;
       } else {
         this.energyLvl -= value;
-        if (this.energyLvl < 0 ) {
+        if (this.energyLvl <= 0 ) {
           this.energyLvl = 0;
           HealthService.decrementHealth(1);
           //message 'exhausted'
-          console.log('I am exhausted');
+          console.log('I am exhausted, went to sleep');
           this.awake = false;
         }
         return this.energyLvl;
@@ -63,8 +67,24 @@ angular.module("webPet")
     }
 
     this.goToSleep = setInterval(() => {
-      if(this._scope.timer % 90 === 0 && this._scope.timer !== 0) {
-        this.awake = false;
+      if (this._scope.HealthService.isAlive) {
+        if(this._scope.timer % 30 === 0 && this._scope.timer !== 0) {
+          this.awake = false;
+          this.incrementEnergyLvl(1);
+          console.log('Brrr, went to sleep');
+        }
+      } else {
+        $interval.cancel(this.goToSleep);
+      }
+    }, 1000);
+
+    this.watchEnergy = setInterval(() => {
+      if (this._scope.HealthService.isAlive) {
+        if(this._scope.timer % 40 === 0 && this._scope.timer !== 0) {
+          this.decrementEnergyLvl(1);
+        }
+      } else {
+        $interval.cancel(this.watchEnergy);
       }
     }, 1000);
 

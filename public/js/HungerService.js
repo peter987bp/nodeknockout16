@@ -1,7 +1,9 @@
 angular.module("webPet")
 .service('HungerService', [
   'HappinessService',
-  function(HappinessService) {
+  'EnergyService',
+  '$interval',
+  function(HappinessService, EnergyService, $interval) {
 
     this._scope = null;
     const maxHunger = 10;
@@ -19,6 +21,7 @@ angular.module("webPet")
 
     this.incrementHungerLvl = (value) => {
       this.hungerLvl += value;
+
       return this.hungerLvl;
     }
 
@@ -26,14 +29,22 @@ angular.module("webPet")
       if(this.hungerLvl - 1 < 0) {
         this.hungerLvl = 0;
         HappinessService.decrementHappinessLvl(1);
+
+      } else if ( this.hungerLvl - 1 === 0) {
+        EnergyService.incrementEnergyLvl(1);
+        this.hungerLvl = 0;
       } else {
         --this.hungerLvl;
       }
     }
 
     this.watchHunger = setInterval(() => {
-      if(this._scope.timer % 30 === 0) {
-        this.incrementHungerLvl(1);
+      if (this._scope.HealthService.isAlive) {
+        if(this._scope.timer % 30 === 0) {
+          this.incrementHungerLvl(1);
+        }
+      } else {
+        $interval.cancel(this.watchHunger);
       }
     }, 1000);
   }
