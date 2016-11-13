@@ -27,7 +27,10 @@ angular.module("webPet")
       if(this.hungerLvl - 1 < 0) {
         this.hungerLvl = 0;
         HappinessService.decrementHappinessLvl(1);
+
+      } else if ( this.hungerLvl - 1 === 0) {
         EnergyService.incrementEnergyLvl(1);
+        this.hungerLvl = 0;
       } else {
         --this.hungerLvl;
       }
