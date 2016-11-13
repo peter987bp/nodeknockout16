@@ -43,7 +43,7 @@ angular.module("webPet")
           this.energyLvl = 0;
           HealthService.decrementHealth(1);
           //message 'exhausted'
-          console.log('I am exhausted');
+          console.log('I am exhausted, went to sleep');
           this.awake = false;
         }
         return this.energyLvl;
@@ -64,9 +64,10 @@ angular.module("webPet")
     }
 
     this.goToSleep = setInterval(() => {
-      if(this._scope.timer % 30 === 0 && this._scope.timer !== 0) {
+      if(this._scope.timer % 40 === 0 && this._scope.timer !== 0) {
         this.awake = false;
-        this.incrementEnergyLvl(2);
+        this.incrementEnergyLvl(1);
+        console.log('went to sleep');
       }
     }, 1000);
 
