@@ -4,6 +4,31 @@ WebPET is a node remake of our beloved Tamagochi.
 
 * [Game Instruction](https://github.com/rumblex/nodeknockout2016-lumpysquirrels/wiki/Game-Instructions)
 
+## Game Rules
+* Start
+- give a name for your WebPET  
+
+* Rules
+
+WebPet starts the life happy and healthy
+You  can monitor your pet's health on screen
+- health
+- hunger
+- energy
+- happiness
+- poo
+
+You can keep it healthy by
+- feeding
+- playing
+- cleaning poops
+
+WebPet is going to sleep, if any life feature has been exhausted to 0.
+You have to wake it up first, than you're gonna able to feed, play or clean
+
+Watch out! 
+WebPET is going to die if its health is 0.
+
 
 
 ## Installation
