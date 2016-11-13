@@ -76,12 +76,24 @@ angular.module("webPet").controller("animController", [
         } else if(!$scope.pooped) {
           $scope.poopState = "";
         }
+        // if($scope.playing) {
+        //   $scope.petState = $scope.playFrames[$scope.timer % 2];
+        // } else if(!$scope.playState) {
+        //   $scope.petState = "";
+        // }
+
       }
     }, (50 * (20 - $scope.health)));
 
     $scope.die = () => {
       //display death frames, then stop animation entirely
-      $interval.cancel(this.animate);
+      // $interval.cancel(this.animate);
+      console.log('$scope.isAlive: ', $scope.isAlive);
+      if($scope.isAlive === false){
+       $scope.petState = $scope.dieFrames;
+      }else if(!$scope.petState) {
+        $scope.petState = " ";
+      }
     }
 
   }
