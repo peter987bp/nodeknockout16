@@ -2,7 +2,8 @@ angular.module("webPet") // attach a controller to the module
 .controller( 'StatusController',
   ['$scope',
   '$interval',
-  ($scope, $interval) => {
+  '$timeout',
+  ($scope, $interval, $timeout) => {
     this.statusLvl = [
       '[░░░░░░░░░░]',
       '[█░░░░░░░░░]',
@@ -60,7 +61,7 @@ angular.module("webPet") // attach a controller to the module
 
     this.feed = () => {
       $scope.feeding = true;
-      $scope.feedCalled = $scope.timer;
+      $timeout(() => {$scope.feeding = false}, 5000)
       if ($scope.HealthService.isAlive && $scope.awake) {
         $scope.HungerService.decrementHungerLvl(1);
         this.updateOnPlayerAction();
@@ -71,7 +72,7 @@ angular.module("webPet") // attach a controller to the module
 
     this.play = () => {
       $scope.playing = true;
-      $scope.playCalled = $scope.timer;
+      $timeout(() => {$scope.playing = false}, 5000)
       if ($scope.HealthService.isAlive && $scope.awake) {
         $scope.HappinessService.incrementHappinessLvl(1);
         this.updateOnPlayerAction();
