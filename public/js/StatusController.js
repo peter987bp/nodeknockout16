@@ -10,6 +10,9 @@ angular.module("webPet") // attach a controller to the module
     $scope.energy = $scope.EnergyService.energyLvl;
     $scope.pooped = $scope.PoopService.pooped;
     $scope.awake = $scope.EnergyService.awake;
+    $scope.isAlive = $scope.HealthService.isAlive;
+    $scope.playing = false;
+    $scope.feeding = false;
 
     $scope.input = '';
 
@@ -21,6 +24,7 @@ angular.module("webPet") // attach a controller to the module
         $scope.energy = $scope.EnergyService.energyLvl;
         $scope.pooped = $scope.PoopService.pooped;
         $scope.awake = $scope.EnergyService.awake;
+        $scope.isAlive = $scope.HealthService.isAlive;
       } else {
         $interval.cancel(this.updateStatus);
       }
@@ -33,9 +37,14 @@ angular.module("webPet") // attach a controller to the module
       $scope.energy = $scope.EnergyService.energyLvl;
       $scope.pooped = $scope.PoopService.pooped;
       $scope.awake = $scope.EnergyService.awake;
+      $scope.isAlive = $scope.HealthService.isAlive;
+
     }
 
     this.feed = () => {
+      console.log('$scope.feedingstate: ', $scope.feeding);
+      $scope.feeding = true;
+      console.log('$scope.feedingstate: ', $scope.feeding);
       if ($scope.HealthService.isAlive) {
         $scope.HungerService.decrementHungerLvl(1);
         this.updateOnPlayerAction();
@@ -43,6 +52,7 @@ angular.module("webPet") // attach a controller to the module
     }
 
     this.play = () => {
+      $scope.playing = true;
       if ($scope.HealthService.isAlive) {
         $scope.HappinessService.incrementHappinessLvl(1);
         this.updateOnPlayerAction();
